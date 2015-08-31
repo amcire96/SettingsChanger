@@ -26,6 +26,19 @@ public class SettingsItem implements Parcelable {
     private Context mContext;
 
 
+    public SettingsItem(SettingsItem item, Context c){
+        this.isWifiOn = item.isWifiOn();
+        this.isBluetoothOn = item.isBluetoothOn();
+        this.daysOfWeekString = item.getDaysOfWeekString();
+        this.daysOfWeekList = item.getDaysOfWeekList();
+        this.startTime = item.getStartTime();
+        this.endTime = item.getEndTime();
+
+        this.mContext = c;
+
+    }
+
+
     public SettingsItem(Bundle settings, Context context){
         mContext = context;
 

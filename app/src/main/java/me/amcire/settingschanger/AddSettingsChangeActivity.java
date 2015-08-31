@@ -149,7 +149,7 @@ public class AddSettingsChangeActivity extends AppCompatActivity{
                     //                settings.putString("airplane", "" + airplaneCB.isChecked());
                     //                settings.putString("location", "" + locationCB.isChecked());
 
-                    item.startAlarm();
+//                    item.startAlarm();
 
                     Intent data = new Intent();
                     data.putExtra("settingsItem",item);

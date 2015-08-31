@@ -77,12 +77,13 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == REQUEST_ID && resultCode == RESULT_OK) {
             Bundle settings = data.getExtras();
             SettingsItem item = settings.getParcelable("settingsItem");
+            SettingsItem itemWithContext = new SettingsItem(item,getApplicationContext());
 
             Log.i("MINE", "Wifi is supposed to be on: " + item.isWifiOn());
             Log.i("MINE", "Bluetooth is supposed to be on: " + item.isBluetoothOn());
 
-            mAdapter.add(item);
-//            item.startAlarm();
+            mAdapter.add(itemWithContext);
+            itemWithContext.startAlarm();
 
         }
 
