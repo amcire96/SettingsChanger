@@ -32,6 +32,7 @@
     <string name="no_day">No Day Selected</string>
 
     <string name="to">to</string>
+    <string name="delete">Delete</string>
 
     <!--
     <string-array name="days_of_week">

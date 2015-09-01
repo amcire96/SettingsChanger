@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -22,6 +23,7 @@ public class SettingsAdapter extends BaseAdapter{
         mContext = context;
     }
 
+
     public void add(SettingsItem item) {
 
         mItems.add(item);
@@ -33,6 +35,11 @@ public class SettingsAdapter extends BaseAdapter{
         return mItems;
     }
 
+    public void setmItems(ArrayList<SettingsItem> mItems) {
+        this.mItems = mItems;
+    }
+
+
     public void clear() {
         for(SettingsItem item : mItems){
             item.stopAlarm();
@@ -41,6 +48,7 @@ public class SettingsAdapter extends BaseAdapter{
         notifyDataSetChanged();
 
     }
+
 
     @Override
     public int getCount() {
@@ -70,6 +78,7 @@ public class SettingsAdapter extends BaseAdapter{
             settingsItemView = convertView;
         }
 
+
         TextView wifi = (TextView) settingsItemView.findViewById(R.id.wifi_text_item);
         TextView bluetooth = (TextView) settingsItemView.findViewById(R.id.bluetooth_text_item);
         TextView daysOfWeek = (TextView) settingsItemView.findViewById(R.id.days_of_week_item);
@@ -90,6 +99,16 @@ public class SettingsAdapter extends BaseAdapter{
 
         endTime.setText(item.getEndTime().asString());
         endTime.setTextColor(Color.BLACK);
+
+        if(!item.isSelected()){
+            settingsItemView.setBackground(null);
+        }
+        if(!item.isEditable()){
+            settingsItemView.setOnClickListener(null);
+        }
+
+
+        item.setImplView(settingsItemView);
 
         return settingsItemView;
     }

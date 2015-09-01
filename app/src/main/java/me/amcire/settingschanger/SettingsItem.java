@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.Log;
+import android.view.View;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -22,6 +23,33 @@ public class SettingsItem implements Parcelable {
     private String[] daysOfWeekList;
     private Time startTime;
     private Time endTime;
+    private View implView;
+    private boolean isSelected;
+    private boolean isEditable;
+
+    public boolean isEditable() {
+        return isEditable;
+    }
+
+    public void setIsEditable(boolean isEditable) {
+        this.isEditable = isEditable;
+    }
+
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public void setIsSelected(boolean isSelected) {
+        this.isSelected = isSelected;
+    }
+
+    public View getImplView() {
+        return implView;
+    }
+
+    public void setImplView(View implView) {
+        this.implView = implView;
+    }
 
     private Context mContext;
 
