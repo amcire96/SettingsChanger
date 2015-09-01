@@ -44,8 +44,10 @@ public class StartReceiver extends BroadcastReceiver {
         alarmManager.setExact(AlarmManager.RTC_WAKEUP, System.currentTimeMillis()+endStartDiffInMil, alarmIntent);
 
         //creates exact repeating alarm feature
-//        alarmManager.setExact(AlarmManager.RTC_WAKEUP, System.currentTimeMillis()+1000 * 60 * 60 * 24 * 7, PendingIntent.getBroadcast(context,0,intent,0));
-        alarmManager.setExact(AlarmManager.RTC_WAKEUP, System.currentTimeMillis()+1000 * 60 * 2, PendingIntent.getBroadcast(context,0,intent,0));
+        alarmManager.setExact(AlarmManager.RTC_WAKEUP, System.currentTimeMillis()+1000 * 60 * 60 * 24 * 7, PendingIntent.getBroadcast(context,0,intent,0));
+        
+        //repeats every 2 mins instead of a week for testing purposes
+//        alarmManager.setExact(AlarmManager.RTC_WAKEUP, System.currentTimeMillis()+1000 * 60 * 2, PendingIntent.getBroadcast(context,0,intent,0));
 
 
         boolean isWifiOn = item.isWifiOn();
