@@ -220,6 +220,11 @@ public class SettingsItem implements Parcelable {
 
         for(String day : dayList) {
             if (calendar.get(Calendar.DAY_OF_WEEK) != DaysUtil.convertToCalDay(day)) {
+                if(DaysUtil.convertToCalDay(day) < calendar.get(Calendar.DAY_OF_WEEK)){
+                    int i = calendar.get(Calendar.WEEK_OF_MONTH);
+                    calendar.set(Calendar.WEEK_OF_MONTH, ++i);
+                }
+
                 calendar.set(Calendar.DAY_OF_WEEK, DaysUtil.convertToCalDay(day));
             }
 
