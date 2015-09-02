@@ -85,6 +85,12 @@ public class SettingsAdapter extends BaseAdapter{
         TextView startTime = (TextView) settingsItemView.findViewById(R.id.start_time_item);
         TextView endTime = (TextView) settingsItemView.findViewById(R.id.end_time_item);
 
+        TextView volume = (TextView) settingsItemView.findViewById(R.id.volume_settings_label);
+
+        volume.setTextColor(Color.BLACK);
+        volume.setText("Volume: " + item.getVolume());
+
+
         wifi.setText(item.isWifiOn() ? "Wifi: On" : "Wifi: Off");
         wifi.setTextColor(Color.BLACK);
 

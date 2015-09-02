@@ -4,28 +4,6 @@
     android:layout_height="match_parent">
 
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp">
-        <TextView
-            android:layout_alignParentLeft="true"
-            android:id="@+id/volume_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/volume_label"
-            android:textSize="20sp"/>
-        
-        <SeekBar
-            android:layout_centerHorizontal="true"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/volume_bar"/>
-
-
-        
-        
-    </RelativeLayout>
     
     <RelativeLayout
         android:id="@+id/wifi_rel_layout"
@@ -74,6 +52,34 @@
 
     </RelativeLayout>
 
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+        <TextView
+            android:layout_alignParentLeft="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/volume_label"
+            android:textSize="20sp"/>
+
+        <SeekBar
+            android:layout_centerHorizontal="true"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/volume_bar"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:id="@+id/volume_label"
+            android:textSize="20sp"/>
+
+
+    </RelativeLayout>
 
 
     <!--

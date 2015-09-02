@@ -23,12 +23,27 @@
 
     </LinearLayout>
 
-    <TextView
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:layout_centerInParent="true"
-        android:layout_centerVertical="true"
-        android:id="@+id/days_of_week_item"/>
+        android:layout_centerVertical="true">
+
+        <TextView
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/days_of_week_item"/>
+
+        <TextView
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/volume_settings_label"/>
+
+    </LinearLayout>
+
 
     <LinearLayout
         android:layout_alignParentRight="true"

@@ -1,9 +1,13 @@
 package me.amcire.settingschanger;
 
+import android.app.AlarmManager;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.media.AudioManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -14,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.RelativeLayout;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -65,6 +70,30 @@ public class AddSettingsChangeActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 bluetoothCB.setChecked(!bluetoothCB.isChecked());
+            }
+        });
+
+        final TextView volumeLabel = (TextView) findViewById(R.id.volume_label);
+//        volumeLabel.setTextColor(Color.BLACK);
+        volumeLabel.setText("" + 0);
+
+        final SeekBar volumeBar = (SeekBar) findViewById(R.id.volume_bar);
+//        AudioManager audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+//        volumeBar.setMax(audioManager.getStreamMaxVolume(AudioManager.STREAM_RING));
+        volumeBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                volumeLabel.setText(""+progress);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
             }
         });
 
@@ -131,6 +160,7 @@ public class AddSettingsChangeActivity extends AppCompatActivity{
                     settings.putString("daysOfWeek", "" + dayOfWeekText.getText());
                     settings.putParcelable("startTime", startTime);
                     settings.putParcelable("endTime", endTime);
+                    settings.putInt("volume",volumeBar.getProgress());
 
                     SettingsItem item = new SettingsItem(settings, getApplicationContext());
 

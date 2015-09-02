@@ -6,6 +6,7 @@ import android.bluetooth.BluetoothAdapter;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.media.AudioManager;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,9 +20,12 @@ public class EndReceiver extends BroadcastReceiver{
         Log.i("MINE","End Receiver!!");
 
         Bundle settings = intent.getExtras();
+        int volume = settings.getInt("currentVolume");
         boolean isWifiOn = settings.getBoolean("currentWifi");
         boolean isBluetoothOn = settings.getBoolean("currentBluetooth");
 
+        AudioManager audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
+        audioManager.setStreamVolume(AudioManager.STREAM_RING,volume,0);
 
 
         WifiManager wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);

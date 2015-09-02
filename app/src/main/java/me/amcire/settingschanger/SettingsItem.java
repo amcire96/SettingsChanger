@@ -27,6 +27,8 @@ public class SettingsItem implements Parcelable {
     private View implView;
     private boolean isSelected;
     private boolean isEditable;
+    private int id;
+    private int volume;
 
     public int getId() {
         return id;
@@ -36,7 +38,7 @@ public class SettingsItem implements Parcelable {
         this.id = id;
     }
 
-    private int id;
+
 
     public boolean isEditable() {
         return isEditable;
@@ -72,12 +74,21 @@ public class SettingsItem implements Parcelable {
         this.daysOfWeekList = item.getDaysOfWeekList();
         this.startTime = item.getStartTime();
         this.endTime = item.getEndTime();
+        this.volume = item.getVolume();
         this.id = (int) (Math.random() * 100000);
 
         this.mContext = c;
 
     }
 
+
+    public int getVolume() {
+        return volume;
+    }
+
+    public void setVolume(int volume) {
+        this.volume = volume;
+    }
 
     public SettingsItem(Bundle settings, Context context){
         mContext = context;
@@ -96,6 +107,7 @@ public class SettingsItem implements Parcelable {
 
         startTime = settings.getParcelable("startTime");
         endTime = settings.getParcelable("endTime");
+        volume = settings.getInt("volume");
 
     }
 
@@ -234,6 +246,7 @@ public class SettingsItem implements Parcelable {
         daysOfWeekString = in.readString();
         startTime = (Time) in.readValue(Time.class.getClassLoader());
         endTime = (Time) in.readValue(Time.class.getClassLoader());
+        volume = in.readInt();
 //        mContext = (Context) in.readValue(Context.class.getClassLoader());
     }
 
@@ -250,6 +263,7 @@ public class SettingsItem implements Parcelable {
         dest.writeString(daysOfWeekString);
         dest.writeValue(startTime);
         dest.writeValue(endTime);
+        dest.writeInt(volume);
 //        dest.writeValue(mContext);
     }
 
