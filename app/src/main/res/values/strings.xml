@@ -34,6 +34,8 @@
     <string name="to">to</string>
     <string name="delete">Delete</string>
 
+    <string name="volume_label">Volume</string>
+
     <!--
     <string-array name="days_of_week">
         <item>Sunday</item>

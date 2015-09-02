@@ -12,6 +12,7 @@ import android.view.View;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Random;
 
 /**
  * Created by Eric on 8/29/2015.
@@ -26,6 +27,16 @@ public class SettingsItem implements Parcelable {
     private View implView;
     private boolean isSelected;
     private boolean isEditable;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    private int id;
 
     public boolean isEditable() {
         return isEditable;
@@ -61,6 +72,7 @@ public class SettingsItem implements Parcelable {
         this.daysOfWeekList = item.getDaysOfWeekList();
         this.startTime = item.getStartTime();
         this.endTime = item.getEndTime();
+        this.id = (int) (Math.random() * 100000);
 
         this.mContext = c;
 
@@ -155,12 +167,28 @@ public class SettingsItem implements Parcelable {
         return false;
     }
 
+    public Context getmContext() {
+        return mContext;
+    }
+
+    public void setmContext(Context mContext) {
+        this.mContext = mContext;
+    }
+
     public void stopAlarm(){
         Log.i("MINE", "alarm cancelling");
         AlarmManager alarmManager = (AlarmManager) mContext.getSystemService(Context.ALARM_SERVICE);
+
+        Intent endIntent = new Intent(mContext,EndReceiver.class);
+        endIntent.setType("" + id);
+
+        PendingIntent alarmEndIntent = PendingIntent.getBroadcast(mContext, 0, endIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        alarmManager.cancel(alarmEndIntent);
+
         Intent intent = new Intent(mContext, StartReceiver.class);
         intent.putExtra("settings", this);
-        PendingIntent alarmIntent = PendingIntent.getBroadcast(mContext, 0, intent, 0);
+        intent.setType(""+id);
+        PendingIntent alarmIntent = PendingIntent.getBroadcast(mContext, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         alarmManager.cancel(alarmIntent);
     }
 
@@ -184,6 +212,7 @@ public class SettingsItem implements Parcelable {
             }
 
             Intent intent = new Intent(mContext, StartReceiver.class);
+            intent.setType(""+id);
             intent.putExtra("settings", this);
             PendingIntent alarmIntent = PendingIntent.getBroadcast(mContext, 0, intent, 0);
 
